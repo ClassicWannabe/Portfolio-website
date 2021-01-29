@@ -1,0 +1,99 @@
+/* Required height of parents of the Full Page Carousel for proper displaying carousel itself */
+html,
+body,
+.view {
+  height: 100%; }
+
+/* Full Page Carousel itself*/
+.carousel {
+  height: 100%; }
+  .carousel .carousel-inner {
+    height: 100%; }
+    .carousel .carousel-inner .carousel-item,
+    .carousel .carousel-inner .active {
+      height: 100%; }
+
+/* Navbar animation */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.top-nav-collapse {
+  background-color: #1C2331; }
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #1C2331; } }
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  background-color: #1C2331; }
+
+
+/* Personal Styling */
+
+.parent {
+  background-color: #242238;
+  width: 100%;
+  height: 100%;
+}
+
+.home-photo {
+  position:fixed;
+  right:0;
+  height: 100%;
+  animation: myphoto 1.5s ease-out;
+}
+
+@keyframes myphoto {
+  from {transform: scale(1.3)}
+  to {transform:scale(1)}
+}
+
+.home-words {
+  font-family: 'Roboto', sans-serif;
+  font-size: 7rem;
+  text-align: center;
+}
+
+.row.home-words {
+  position:absolute;
+  top:10%;
+  bottom:10%;
+}
+
+.home-words.about::after {
+  content:'Welcome!';
+  animation: fadeIn ease 2s;
+}
+
+.home-words.about:hover::after {
+  content:'About';
+  display: block;
+  margin-left: 20%;
+  transition: 0.3s linear;
+}
+
+.home-words.projects::after {
+  content:'I am';
+  animation: fadeIn ease 2s;
+}
+
+.home-words.projects:hover::after {
+  content:'Projects';
+  display: block;
+  margin-left: 20%;
+  transition: 0.3s linear;
+}
+
+.home-words.contacts::after {
+  content:'Ruslan';
+  animation: fadeIn ease 2s;
+}
+
+.home-words.contacts:hover::after {
+  content:'Contacts';
+  display: block;
+  margin-left: 20%;
+  transition: 0.3s linear;
+}

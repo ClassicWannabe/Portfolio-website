@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %}
+
+<div class="parent">
+  <div class="row col-sm-6 home-words">
+    <div class="col-sm-12">
+      <a class="home-words about" style="color: white"></a>
+    </div>
+    <div class="col-sm-12">
+      <a
+        href="{% url 'app:projects' %}"
+        class="home-words projects"
+        style="color: red"
+      ></a>
+    </div>
+    <div class="col-sm-12">
+      <a class="home-words contacts" style="color: red"></a>
+    </div>
+  </div>
+  <img class="home-photo" src="{% static 'img/photo.jpg' %}" />
+</div>
+
+{% endblock %}
