@@ -32,6 +32,7 @@ body,
 
 /* Personal Styling */
 
+/* Home page */
 .parent {
   background-color: #242238;
   width: 100%;
@@ -51,15 +52,16 @@ body,
 }
 
 .home-words {
-  font-family: 'Roboto', sans-serif;
-  font-size: 7rem;
+  font-family: 'Rubik', sans-serif;
+  font-size: 5rem;
   text-align: center;
+  z-index: 1;
 }
 
 .row.home-words {
   position:absolute;
-  top:10%;
-  bottom:10%;
+  top:20%;
+  bottom:20%;
 }
 
 .home-words.about::after {
@@ -97,3 +99,27 @@ body,
   margin-left: 20%;
   transition: 0.3s linear;
 }
+/* Home page */
+
+/* Projects page */
+
+main {
+  background-color: #242238;
+}
+
+/* Projects page */
+
+/* About page */
+
+.about-words {
+  color: white;
+  text-align: justify;
+  margin: 5% 30%;
+}
+
+#resume {
+  color: red;
+  font-weight: bold;
+}
+
+/* About page */

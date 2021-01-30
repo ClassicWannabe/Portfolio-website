@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'includes/navbar.html' %}
+<main class="mt-5 pt-5">
+    <div class="container">
+        <h1 class='about-words'>Backend Web Developer</h1>
+        <p class='about-words'>Hi, I'm Ruslan. I am ambitious backend developer who use various technologies in the projects such as Django, Nodejs+Express, PostgreSQL, MongoDB, Reactjs.</p>
+        <a id='resume' class='about-words' href="{% static 'Ruslan Yeleussinov CV.pdf' %}" target='_blank'>My resume (pdf)</a>
+    </div>
+</main>
+
+{% endblock %}
