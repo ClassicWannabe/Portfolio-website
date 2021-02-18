@@ -42,7 +42,7 @@ body,
 .home-photo {
   position:fixed;
   right:0;
-  height: 100%;
+  max-height: 100%;
   animation: myphoto 1.5s ease-out;
 }
 
@@ -107,14 +107,35 @@ main {
   background-color: #242238;
 }
 
+.carousel-img {
+  display: inline-block;
+  position: relative; 
+  max-height: 100%; 
+  width:100%; 
+  bottom: 4vh;
+}
+
 /* Projects page */
 
 /* About page */
+
+#about {
+  min-height: 100%;
+  padding-bottom: 8vh;
+}
 
 .about-words {
   color: white;
   text-align: justify;
   margin: 5% 30%;
+}
+
+#about-photo {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: 50%;
+  border-radius: 10%;
 }
 
 #resume {
@@ -123,3 +144,17 @@ main {
 }
 
 /* About page */
+
+/* Contacts page */
+
+#contacts {
+  min-height: 100vh;
+}
+
+.contact-words {
+  color: white;
+  text-align: justify;
+  margin: 5% 30%;
+}
+
+/* Contacts page */

@@ -4,7 +4,7 @@
 {% block content %}
     {% include 'includes/navbar.html' %}
     <!--Main layout-->
-    <main class="mt-5 pt-5">
+    <main class="mt-5 pb-3 pt-5">
         <div class="container">
 
             <!--Section: Carousel-->
@@ -20,20 +20,20 @@
                     </ol>
                     <!--/.Indicators-->
                     <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-inner" style='max-height:500px' role="listbox">
                         <!--First slide-->
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg" alt="First slide">
+                            <img class="carousel-img" src="{% static 'img/django-carousel.png' %}" alt="First slide">
                         </div>
                         <!--/First slide-->
                         <!--Second slide-->
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(136).jpg" alt="Second slide">
+                            <img class="carousel-img" src="{% static 'img/node-carousel.jpeg' %}" alt="Second slide">
                         </div>
                         <!--/Second slide-->
                         <!--Third slide-->
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(133).jpg" alt="Third slide">
+                            <img class="carousel-img" src="{% static 'img/react-carousel.png' %}" alt="Third slide">
                         </div>
                         <!--/Third slide-->
                     </div>
@@ -62,55 +62,10 @@
                 <div class="row">
 
                     <!-- Grid column -->
-                    <div class="col-lg-4 col-md-12 mb-3">
-
-                        <div class="view overlay z-depth-1-half project1">
-                            <img src="{% static 'img/projects/ToDo app.png' %}" class="img-fluid" alt="">
-                            <a>
-                                <div class="mask rgba-white-light">This is my project about something</div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-lg-4 col-md-6 mb-3">
-
-                        <div class="view overlay z-depth-1-half">
-                            <img src="{% static 'img/projects/ToDo app.jpeg' %}" class="img-fluid" alt="">
-                            <a>
-                                <div class="mask rgba-white-light"></div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-lg-4 col-md-6 mb-3">
-
-                        <div class="view overlay z-depth-1-half">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img(117).jpg" class="img-fluid" alt="">
-                            <a>
-                                <div class="mask rgba-white-light"></div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
-                <!-- Grid row -->
-                <div class="row">
-
-                    <!-- Grid column -->
                     <div class="col-md-6 mb-3">
 
                         <div class="view overlay z-depth-1-half">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img(117).jpg" class="img-fluid" alt="">
+                            <img src="{% static 'img/projects/MusicApplication.jpeg' %}" class="img-fluid" alt="">
                             <a>
                                 <div class="mask rgba-white-light"></div>
                             </a>
@@ -123,7 +78,7 @@
                     <div class="col-md-6 mb-3">
 
                         <div class="view overlay z-depth-1-half">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img(129).jpg" class="img-fluid" alt="">
+                            <img src="{% static 'img/projects/ToDo.jpeg' %}" class="img-fluid" alt="">
                             <a>
                                 <div class="mask rgba-white-light"></div>
                             </a>
@@ -142,7 +97,7 @@
                     <div class="col-md-12 mb-3">
 
                         <div class="view overlay z-depth-1-half">
-                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(137).jpg" class="img-fluid" alt="">
+                            <img src="{% static 'img/projects/SocialBlog.jpg' %}" class="img-fluid" alt="">
                             <a>
                                 <div class="mask rgba-white-light"></div>
                             </a>
@@ -161,7 +116,7 @@
 
 
             <!--Section: Jumbotron-->
-            <section class="card wow fadeIn" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background2.jpg);">
+            <section class="projects-jumbotron card wow fadeIn" style="background-image: url({% static 'img/projects-jumbotron.jpg' %}); background-size: cover">
 
                 <!-- Content -->
                 <div class="card-body text-white text-center py-5 px-5 my-5">
@@ -175,7 +130,7 @@
                     <p class="mb-4">
                         <strong>In case if you have any questions or want to directly talk to me, you can find my contact details here</strong>
                     </p>
-                    <a target="_blank" href="{% url 'app:contacts' %}" class="btn btn-outline-white btn-lg">Contact me
+                    <a href="{% url 'app:contacts' %}" class="btn btn-outline-white btn-lg" target="_blank">Contact me
                         <i class="fa fa-phone ml-2" aria-hidden="true"></i>
                     </a>
 

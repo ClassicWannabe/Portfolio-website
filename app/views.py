@@ -11,3 +11,6 @@ class AboutView(TemplateView):
 class ProjectsView(TemplateView):
     template_name = 'projects.html'
 
+class ContactsView(TemplateView):
+    template_name = 'contacts.html'
+

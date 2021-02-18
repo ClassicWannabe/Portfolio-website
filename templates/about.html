@@ -3,9 +3,10 @@
 
 {% block content %}
 {% include 'includes/navbar.html' %}
-<main class="mt-5 pt-5">
+<main id='about' class="mt-5 pt-5">
     <div class="container">
         <h1 class='about-words'>Backend Web Developer</h1>
+        <img id='about-photo' src="{% static 'img/about-photo.jpg' %}" />
         <p class='about-words'>Hi, I'm Ruslan. I am ambitious backend developer who use various technologies in the projects such as Django, Nodejs+Express, PostgreSQL, MongoDB, Reactjs.</p>
         <a id='resume' class='about-words' href="{% static 'Ruslan Yeleussinov CV.pdf' %}" target='_blank'>My resume (pdf)</a>
     </div>
