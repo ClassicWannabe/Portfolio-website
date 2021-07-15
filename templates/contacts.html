@@ -1,35 +1,49 @@
 {% extends 'base.html' %} 
 {% load static %} 
 
-{% block content %} 
+{% block content %}
 <style>
-  #email::after {
-      display:inline-block;
-    content: "ruslaneleusinov@gmail.com";
+  #email {
+    display: none;
+  }
+
+  .email-label {
+    cursor: copy;
+  }
+
+  .email-label::after {
+    display: inline-block;
+    content: "{{contacts.email}}";
     font-weight: bold;
     color: red;
     width: 20vw;
   }
 
-  #email:hover::after {
+  .email-label:hover::after {
     content: "Click to copy";
     color: red;
   }
 
-  #email:active::after {
-    content: "Email copied";
-    color: red;
+  #email:checked + label::after {
+    content: "email copied";
   }
-
 </style>
+
 {% include 'includes/navbar.html' %}
 <main id="contacts" class="mt-5 pt-5">
   <div class="container">
-    <h1 class="contact-words">Get in touch</h1>
-    <div class="contact-words">
-      If you want to discuss something or just talk to me you can send an email to
-      <a id='email'></a>
-      </div>
+    <h1 class="contacts-words">{{contacts.title}}</h1>
+    <div class="contacts-words">
+      {{contacts.content}}
+      <input type="checkbox" id="email" />
+      <label class="email-label" for="email"></label>
+    </div>
+    {% for link in contacts.links.all %}
+    <a class="contacts-links" href="{{link.url}}" target="_blank"
+      >{{link.name}}</a
+    >
+    <br />
+    {% endfor %}
   </div>
 </main>
 
@@ -42,9 +56,9 @@
     document.execCommand("copy");
     document.body.removeChild(tempInput);
   }
-  
+
   document.querySelector("#email").onclick = function () {
-    copyEmail("ruslaneleusinov@gmail.com");
+    copyEmail("{{contacts.email}}");
   };
 </script>
 

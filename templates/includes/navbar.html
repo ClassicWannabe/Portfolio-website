@@ -18,18 +18,18 @@
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'app:home' %}">Home
+                            <a class="nav-link waves-effect" href="{% url 'core:home' %}">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item {% if request.get_full_path == '/projects' %}active{% endif %}">
-                            <a class="nav-link waves-effect" href="{% url 'app:projects' %}">My projects</a>
+                            <a class="nav-link waves-effect" href="{% url 'core:projects' %}">My projects</a>
                         </li>
                         <li class="nav-item {% if request.get_full_path == '/about' %}active{% endif %}">
-                            <a class="nav-link waves-effect" href="{% url 'app:about' %}">About me</a>
+                            <a class="nav-link waves-effect" href="{% url 'core:about' %}">About me</a>
                         </li>
                         <li class="nav-item {% if request.get_full_path == '/contacts' %}active{% endif %}">
-                            <a class="nav-link waves-effect" href="{% url 'app:contacts' %}">Contacts</a>
+                            <a class="nav-link waves-effect" href="{% url 'core:contacts' %}">Contacts</a>
                         </li>
                     </ul>
 

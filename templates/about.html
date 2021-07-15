@@ -1,15 +1,23 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
-{% block content %}
+{% block content %} 
 {% include 'includes/navbar.html' %}
-<main id='about' class="mt-5 pt-5">
-    <div class="container">
-        <h1 class='about-words'>Backend Web Developer</h1>
-        <img id='about-photo' src="{% static 'img/about-photo.jpg' %}" />
-        <p class='about-words'>Hi, I'm Ruslan. I am ambitious backend developer who use various technologies in the projects such as Django, Nodejs+Express, PostgreSQL, MongoDB, Reactjs.</p>
-        <a id='resume' class='about-words' href="{% static 'Ruslan Yeleussinov CV.pdf' %}" target='_blank'>My resume (pdf)</a>
-    </div>
+<main id="about" class="mt-5 pt-5">
+  <div class="container">
+    <h1 class="about-words about-title">{{about.title}}</h1>
+    <img id="about-photo" src="{{about.photo.url}}" />
+    <p class="about-words">{{about.content}}</p>
+    {% for doc in about.documents.all %}
+    <a
+      id="resume"
+      class="about-words"
+      href="{{doc.document.url}}"
+      target="_blank"
+      >{{doc.name}} ({{doc.extension}})</a
+    >
+    {% endfor %}
+  </div>
 </main>
 
 {% endblock %}

@@ -1,25 +1,55 @@
 {% extends 'base.html' %} 
 {% load static %} 
-
 {% block content %}
 
-<div class="parent">
-  <div class="row col-sm-6 home-words">
+<div class="home-page">
+  <div class="row home-words-container col-sm-6">
     <div class="col-sm-12">
-      <a class="home-words about" href="{% url 'app:about' %}" style="color: white"></a>
+      <a
+        class="home-words about"
+        href="{% url 'core:about' %}"
+        style="color: white"
+      ></a>
     </div>
     <div class="col-sm-12">
       <a
-        href="{% url 'app:projects' %}"
+        href="{% url 'core:projects' %}"
         class="home-words projects"
         style="color: red"
       ></a>
     </div>
     <div class="col-sm-12">
-      <a class="home-words contacts" style="color: red"></a>
+      <a
+        href="{% url 'core:contacts' %}"
+        class="home-words contacts"
+        style="color: red"
+      ></a>
     </div>
   </div>
   <img class="home-photo" src="{% static 'img/photo.jpg' %}" />
 </div>
+
+<script>
+  if (document.body.offsetWidth <= 1000) {
+    const elements = document.querySelectorAll(".home-words");
+    var clicked = false;
+    document.body.addEventListener("click", () => {
+      for (element of elements) {
+        if (clicked) {
+          element.classList.remove("mobile");
+        } else {
+          element.classList.add("mobile");
+        }
+      }
+      clicked = !clicked;
+    });
+
+    for (element of elements) {
+      element.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+    }
+  }
+</script>
 
 {% endblock %}
