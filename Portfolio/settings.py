@@ -130,6 +130,7 @@ MEDIA_ROOT = BASE_DIR / "media_root"
 if DEBUG is False:
     import dj_database_url
 
+    ALLOWED_HOSTS += "dj-portfolio-website.herokuapp.com"
     MIDDLEWARE += "whitenoise.middleware.WhiteNoiseMiddleware"
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
