@@ -4,6 +4,7 @@ python:
 
 env:
   - SECRET_KEY=12345
+  - DEBUG=true
 
 install: pip install -r requirements.txt
 
