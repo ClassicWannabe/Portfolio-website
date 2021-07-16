@@ -128,13 +128,8 @@ MEDIA_ROOT = BASE_DIR / "media_root"
 
 
 if DEBUG is False:
+    import dj_database_url
+
     MIDDLEWARE += "whitenoise.middleware.WhiteNoiseMiddleware"
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    DATABASES["default"] = {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": config("HOST"),
-        "NAME": config("NAME"),
-        "PORT": config("PORT"),
-        "PASSWORD": config("PASSWORD"),
-        "CONN_MAX_AGE": 600,
-    }
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
