@@ -20,6 +20,7 @@ class Project(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(12)],
     )
     order = models.PositiveSmallIntegerField(_("order"), unique=True)
+    published = models.BooleanField(_("published"), default=True)
 
     def __str__(self):
         return self.title
@@ -66,6 +67,7 @@ class Document(models.Model):
     )
     name = models.CharField(_("document name"), max_length=50)
     document = models.FileField(_("document"), upload_to="about")
+    order = models.PositiveSmallIntegerField(_("order"), unique=True)
 
     def __str__(self):
         return self.name
@@ -74,6 +76,9 @@ class Document(models.Model):
         """Returns document extension"""
         _, extension = os.path.splitext(self.document.name)
         return extension[1:]
+
+    class Meta:
+        ordering = ["order"]
 
 
 class Contacts(models.Model):
@@ -114,9 +119,27 @@ class Link(models.Model):
     parent = models.ForeignKey(
         "Contacts", related_name="links", on_delete=models.CASCADE
     )
+    order = models.PositiveSmallIntegerField(_("order"), unique=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["order"]
+
+
+class Carousel(models.Model):
+    """Model for carousel images on projects page"""
+
+    image = models.ImageField(_("image"), upload_to="projects/carousel")
+    published = models.BooleanField(_("published"), default=False)
+    order = models.PositiveSmallIntegerField(_("order"), unique=True)
+
+    def __str__(self):
+        return self.image.name
+
+    class Meta:
+        ordering = ["order"]
 
 
 @receiver(models.signals.post_delete, sender=Project)

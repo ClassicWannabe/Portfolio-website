@@ -47,6 +47,11 @@ def sample_about(**params) -> About:
 
 def sample_document(**params) -> Document:
     """Creates and returns `Document` object with default parameters"""
+    try:
+        order = Document.objects.all().order_by("-order")[0].order
+    except:
+        order = 0
+        
     cv = SimpleUploadedFile(
         f"{params.pop('filename', 'testfile')}.pdf", b"file_content"
     )
@@ -54,6 +59,7 @@ def sample_document(**params) -> Document:
         "name": "CV",
         "document": cv,
         "parent": sample_about(),
+        "order": order + 1,
     }
     defaults.update(params)
 
@@ -74,7 +80,16 @@ def sample_contacts(**params) -> Contacts:
 
 def sample_link(**params) -> Link:
     """Creates and returns `Link` object with default parameters"""
-    defaults = {"name": "new link", "url": "example.com", "parent": sample_contacts()}
+    try:
+        order = Link.objects.all().order_by("-order")[0].order
+    except:
+        order = 0
+    defaults = {
+        "name": "new link",
+        "url": "example.com",
+        "parent": sample_contacts(),
+        "order": order + 1,
+    }
     defaults.update(params)
 
     return Link.objects.create(**defaults)

@@ -1,5 +1,9 @@
 import pytest
 
+from django.core.files.uploadedfile import SimpleUploadedFile
+
+from ..models import Carousel
+
 pytestmark = pytest.mark.django_db
 
 
@@ -34,6 +38,40 @@ class ProjectViewTests:
         response = client.post(project_url, payload)
 
         assert response.status_code == 405
+
+    def test_carousel_in_context(self, client, create_project, project_url) -> None:
+        """Test that carousel images are in context data of Projects view"""
+        create_project(order=1)
+        carousel = Carousel.objects.create(
+            image=SimpleUploadedFile("img.png", b"content"), published=True, order=1
+        )
+
+        response = client.get(project_url)
+        carousel_context = response.context.get("carousel")
+
+        assert response.status_code == 200
+        assert carousel in carousel_context
+
+    def test_unpublished_carousel_not_in_context(
+        self, client, create_project, project_url
+    ) -> None:
+        """Test that only published carousel images are in context"""
+        create_project(order=1)
+        carousel1 = Carousel.objects.create(
+            image=SimpleUploadedFile("img.png", b"content"), published=True, order=1
+        )
+        carousel2 = Carousel.objects.create(
+            image=SimpleUploadedFile("picture.jpeg", b"content"),
+            published=False,
+            order=2,
+        )
+
+        response = client.get(project_url)
+        carousel_context = response.context.get("carousel")
+
+        assert response.status_code == 200
+        assert carousel1 in carousel_context
+        assert carousel2 not in carousel_context
 
 
 class AboutViewTests:

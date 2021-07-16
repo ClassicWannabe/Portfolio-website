@@ -1480,19 +1480,16 @@ button.bg-light:focus {
 @font-face {
   font-family: Roboto;
   font-weight: 200;
-  src: local(Roboto Thin), url("../font/roboto/Roboto-Thin.eot");
   src: url("../font/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Thin.woff2") format("woff2"), url("../font/roboto/Roboto-Thin.woff") format("woff"), url("../font/roboto/Roboto-Thin.ttf") format("truetype"); }
 
 @font-face {
   font-family: Roboto;
   font-weight: 300;
-  src: local(Roboto Light), url("../font/roboto/Roboto-Light.eot");
   src: url("../font/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Light.woff2") format("woff2"), url("../font/roboto/Roboto-Light.woff") format("woff"), url("../font/roboto/Roboto-Light.ttf") format("truetype"); }
 
 @font-face {
   font-family: Roboto;
   font-weight: 400;
-  src: local(Roboto Regular), url("../font/roboto/Roboto-Regular.eot");
   src: url("../font/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Regular.woff2") format("woff2"), url("../font/roboto/Roboto-Regular.woff") format("woff"), url("../font/roboto/Roboto-Regular.ttf") format("truetype"); }
 
 @font-face {

@@ -221,6 +221,12 @@ main {
   color: black !important;
 }
 
+@media screen and (max-width: 500px) {
+  .project-item {
+    height: 250px !important;
+  }
+}
+
 /* Projects page */
 
 /* About page */
@@ -324,6 +330,16 @@ main {
   color: rgb(206, 7, 7);
   padding-left: 1%;
   transition: 0.3s linear;
+}
+
+@media screen and (max-width: 500px) {
+  .contacts-words,
+  .contacts-links {
+    margin: 0;
+  }
+  .contacts-words {
+    margin: 20px 0;
+  }
 }
 
 /* Contacts page */

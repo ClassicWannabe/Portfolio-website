@@ -6,7 +6,7 @@ from django.db.utils import IntegrityError
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.exceptions import ValidationError
 
-from ..models import Project, About, Document, Contacts, Link
+from ..models import Project, About, Document, Contacts, Link, Carousel
 
 pytestmark = pytest.mark.django_db
 
@@ -90,9 +90,11 @@ class DocumentModelTests:
         about = create_about()
         pdf = SimpleUploadedFile("resume.pdf", b"content")
         picture = SimpleUploadedFile("certificate.png", b"content")
-        document1 = Document.objects.create(name="CV", parent=about, document=pdf)
+        document1 = Document.objects.create(
+            name="CV", parent=about, document=pdf, order=1
+        )
         document2 = Document.objects.create(
-            name="Certificate", parent=about, document=picture
+            name="Certificate", parent=about, document=picture, order=2
         )
 
         documents = Document.objects.all()
@@ -112,7 +114,7 @@ class DocumentModelTests:
         file_extension = filename.split(".")[-1]
         pdf = SimpleUploadedFile(filename, b"content")
         document = Document.objects.create(
-            name="My document", parent=create_about(), document=pdf
+            name="My document", parent=create_about(), document=pdf, order=1
         )
 
         assert document.extension() == file_extension
@@ -163,3 +165,26 @@ class LinkModelTests:
         link = create_link(name="My Link")
 
         assert str(link) == link.name
+
+
+class CarouselModelTests:
+    """Tests for `Carousel` model"""
+
+    def test_create_carousel_successful(self) -> None:
+        """Test creating `Carousel` objects is successful"""
+        img1 = SimpleUploadedFile("img1.jpg", b"content")
+        img2 = SimpleUploadedFile("img2.png", b"content")
+        carousel1 = Carousel.objects.create(image=img1, order=1)
+        carousel2 = Carousel.objects.create(image=img2, order=2)
+
+        carousels = Carousel.objects.all()
+
+        assert carousel1 in carousels
+        assert carousel2 in carousels
+
+    def test_carousel_str(self) -> None:
+        """Test `Carousel` object string representation"""
+        img = SimpleUploadedFile("img.jpg", b"content")
+        carousel = Carousel.objects.create(image=img, order=1)
+
+        assert str(carousel) == carousel.image.name

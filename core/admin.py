@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Project, About, Document, Contacts, Link
+from .models import Project, About, Document, Contacts, Link, Carousel
 
 
 class DocumentInline(admin.StackedInline):
@@ -29,3 +29,9 @@ class AboutAdmin(admin.ModelAdmin):
 class ContactsAdmin(admin.ModelAdmin):
     list_display = ("title", "published")
     inlines = [LinkInline]
+
+
+@admin.register(Carousel)
+class CarouselAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "published", "order")
+    list_editable = ("published", "order")

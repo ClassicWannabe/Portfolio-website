@@ -7,6 +7,7 @@
 <main class="projects-page mt-5 pb-3 pt-5">
   <div class="container">
     <!--Section: Carousel-->
+    {% if carousel %}
     <section class="mb-4">
       <!--Carousel Wrapper-->
       <div
@@ -16,44 +17,26 @@
       >
         <!--Indicators-->
         <ol class="carousel-indicators">
+          {% for _ in carousel %}
           <li
             data-target="#carousel-example-1z"
-            data-slide-to="0"
-            class="active"
+            data-slide-to="{{forloop.counter0}}"
+            class="{% if forloop.first %}active{% endif %}"
           ></li>
-          <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-          <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+          {% endfor %}
         </ol>
         <!--/.Indicators-->
         <!--Slides-->
         <div class="carousel-inner" style="max-height: 500px" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
+          {% for img in carousel %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
             <img
               class="carousel-img"
-              src="{% static 'img/django-carousel.png' %}"
-              alt="First slide"
+              src="{{img.image.url}}"
+              alt="Slide {{forloop.counter}}"
             />
           </div>
-          <!--/First slide-->
-          <!--Second slide-->
-          <div class="carousel-item">
-            <img
-              class="carousel-img"
-              src="{% static 'img/node-carousel.jpeg' %}"
-              alt="Second slide"
-            />
-          </div>
-          <!--/Second slide-->
-          <!--Third slide-->
-          <div class="carousel-item">
-            <img
-              class="carousel-img"
-              src="{% static 'img/react-carousel.png' %}"
-              alt="Third slide"
-            />
-          </div>
-          <!--/Third slide-->
+          {% endfor %}
         </div>
         <!--/.Slides-->
         <!--Controls-->
@@ -79,6 +62,7 @@
       </div>
       <!--/.Carousel Wrapper-->
     </section>
+    {% endif %}
     <!--Section: Carousel-->
 
     <!--Section: Images-->
@@ -86,111 +70,31 @@
       <!-- Grid row -->
       <div class="row">
         {% for project in project_list %}
-          <div class="project-item col-md-{{project.grid_size}} mb-3">
-            <div class="view overlay z-depth-1-half">
-              <img src="{{project.picture.url}}" class="img-fluid" alt="{{project.title}}" />
-              <div class="mask rgba-white-light">
-                <a
-                  href="{{project.source_link}}"
-                  class="projects-links github btn btn-outline-danger"
-                  data-mdb-ripple-color="dark"
-                  target="_blank"
-                  >Source code</a
-                >
-                <a
-                  href="{{project.demo_link}}"
-                  class="projects-links website btn btn-outline-warning"
-                  target="_blank"
-                  >Live Demo</a
-                >
-              </div>
+        <div class="project-item col-md-{{project.grid_size}} mb-3">
+          <div class="view overlay z-depth-1-half">
+            <img
+              src="{{project.picture.url}}"
+              class="img-fluid"
+              alt="{{project.title}}"
+            />
+            <div class="mask rgba-white-light">
+              <a
+                href="{{project.source_link}}"
+                class="projects-links github btn btn-outline-danger"
+                data-mdb-ripple-color="dark"
+                target="_blank"
+                >Source code</a
+              >
+              <a
+                href="{{project.demo_link}}"
+                class="projects-links website btn btn-outline-warning"
+                target="_blank"
+                >Live Demo</a
+              >
             </div>
           </div>
+        </div>
         {% endfor %}
-        <!-- Grid column -->
-        <div class="col-md-6 mb-3">
-          <div class="view overlay z-depth-1-half">
-            <img
-              src="{% static 'img/projects/MusicApplication.jpeg' %}"
-              class="img-fluid"
-              alt=""
-            />
-            <div class="mask rgba-white-light">
-              <a
-                href="https://github.com/ClassicWannabe/django-react-MusicApp"
-                class="projects-links github btn btn-outline-danger"
-                data-mdb-ripple-color="dark"
-                target="_blank"
-                >GitHub</a
-              >
-              <a
-                href="https://django-react-music-app.herokuapp.com/"
-                class="projects-links website btn btn-outline-warning"
-                target="_blank"
-                >Live Demo</a
-              >
-            </div>
-          </div>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-6 mb-3">
-          <div class="view overlay z-depth-1-half">
-            <img
-              src="{% static 'img/projects/ToDo.jpeg' %}"
-              class="img-fluid"
-              alt=""
-            />
-            <div class="mask rgba-white-light">
-              <a
-                href="https://github.com/ClassicWannabe/django-react-ToDo-heroku"
-                class="projects-links github btn btn-outline-danger"
-                data-mdb-ripple-color="dark"
-                target="_blank"
-                >GitHub</a
-              >
-              <a
-                href="https://django-react-todo-application.herokuapp.com/"
-                class="projects-links website btn btn-outline-warning"
-                target="_blank"
-                >Live Demo</a
-              >
-            </div>
-          </div>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-
-      <!-- Grid row -->
-      <div class="row">
-        <!-- Grid column -->
-        <div class="col-md-12 mb-3">
-          <div class="view overlay z-depth-1-half">
-            <img
-              src="{% static 'img/projects/StarBlog.jpg' %}"
-              class="img-fluid"
-              alt=""
-            />
-            <div class="mask rgba-white-light">
-              <a
-                href="https://github.com/ClassicWannabe/Star-Blog"
-                class="projects-links github btn btn-outline-danger"
-                data-mdb-ripple-color="dark"
-                target="_blank"
-                >GitHub</a
-              >
-              <a
-                href="http://wannabe.pythonanywhere.com/"
-                class="projects-links website btn btn-outline-warning"
-                target="_blank"
-                >Live Demo</a
-              >
-            </div>
-          </div>
-        </div>
-        <!-- Grid column -->
       </div>
       <!-- Grid row -->
     </section>
