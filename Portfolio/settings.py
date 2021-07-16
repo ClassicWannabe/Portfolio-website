@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -133,3 +134,5 @@ if DEBUG is False:
     MIDDLEWARE += "whitenoise.middleware.WhiteNoiseMiddleware"
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+django_heroku.settings(locals())
