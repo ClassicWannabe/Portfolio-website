@@ -49,9 +49,9 @@ def sample_document(**params) -> Document:
     """Creates and returns `Document` object with default parameters"""
     try:
         order = Document.objects.all().order_by("-order")[0].order
-    except:
+    except IndexError:
         order = 0
-        
+
     cv = SimpleUploadedFile(
         f"{params.pop('filename', 'testfile')}.pdf", b"file_content"
     )
@@ -82,8 +82,9 @@ def sample_link(**params) -> Link:
     """Creates and returns `Link` object with default parameters"""
     try:
         order = Link.objects.all().order_by("-order")[0].order
-    except:
+    except IndexError:
         order = 0
+
     defaults = {
         "name": "new link",
         "url": "example.com",

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -125,3 +125,16 @@ STATIC_ROOT = BASE_DIR / "static_root"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media_root"
+
+
+if DEBUG is False:
+    MIDDLEWARE += "whitenoise.middleware.WhiteNoiseMiddleware"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    DATABASES["default"] = {
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": config("HOST"),
+        "NAME": config("NAME"),
+        "PORT": config("PORT"),
+        "PASSWORD": config("PASSWORD"),
+        "CONN_MAX_AGE": 600,
+    }
