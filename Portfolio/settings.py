@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -131,7 +132,6 @@ MEDIA_ROOT = BASE_DIR / "media_root"
 
 if DEBUG is False:
     ALLOWED_HOSTS += "dj-portfolio-website.herokuapp.com"
-    MIDDLEWARE += "whitenoise.middleware.WhiteNoiseMiddleware"
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
