@@ -195,15 +195,15 @@ main {
 }
 
 .project-item.col-md-12 {
-  height: 400px;
+  max-height: 400px;
 }
 
 .project-item.col-md-6 {
-  height: 350px;
+  max-height: 350px;
 }
 
 .project-item.col-md-4 {
-  height: 300px;
+  max-height: 300px;
 }
 
 .projects-links {
@@ -223,7 +223,7 @@ main {
 
 @media screen and (max-width: 500px) {
   .project-item {
-    height: 250px !important;
+    max-height: 250px !important;
   }
 }
 
