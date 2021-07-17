@@ -132,6 +132,11 @@ MEDIA_ROOT = BASE_DIR / "media_root"
 if DEBUG is False:
     ALLOWED_HOSTS += "dj-portfolio-website.herokuapp.com"
     MIDDLEWARE.insert(0, "whitenoise.middleware.WhiteNoiseMiddleware")
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+    AWS_QUERYSTRING_AUTH = False
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
     django_heroku.settings(locals())
